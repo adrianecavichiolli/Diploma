@@ -8,9 +8,10 @@ import skimage.exposure as exposure
 import math
 format = 'F:/studies/diploma/DataSets-Computer-Vision/data.brodatz/size_28x28/D{:03d}_{:02d}.png'
 classesStart = 1
-classesEnd = 20
+classesEnd = 2
+
 imgStart = 1
-imgEnd = 10
+imgEnd = 3
 #imgLearnStart = 6
 #imgLearnEnd = 10
 #imgClassstart = 1
@@ -40,15 +41,19 @@ def classify (numberCl, numberInst, L) :
 
 
 def imageL1(img1, img2 ):
-   hist1 = np.histogram(img1, bins=64)[0]
-   hist2 = np.histogram(img2, bins=64)[0]
-  
+   hist1 = np.histogram(img1, bins=256)[0]
+   hist2 = np.histogram(img2, bins=256)[0]
+   plt.hold(True)
+   plt.plot(hist1)
+   plt.plot(hist2)
+   plt.hold(False)
+   plt.show()
    result = abs(hist1 - hist2)
    return np.sum(result)
 
 def imageL2(img1, img2 ):
-   hist1 = np.histogram(img1, bins=64)[0]
-   hist2 = np.histogram(img2, bins=64)[0]
+   hist1 = np.histogram(img1, bins=256)[0]
+   hist2 = np.histogram(img2, bins=256)[0]
   
    result = (hist1 - hist2)**2
    return math.sqrt(np.sum(result))
@@ -62,7 +67,6 @@ def testL (L) :
             if (fndClass == 0) :
                 all -= 1
                 continue
-            #print ('real: {}, classified: {}'.format(i, fndClass))
             if (i == fndClass) :
                 correct += 1
     print(correct)
