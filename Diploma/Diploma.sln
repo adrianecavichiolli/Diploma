@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "COOMatrix", "COOMatrix\COOMatrix\COOMatrix.pyproj", "{26CF4730-A661-4937-9A74-084CEC507A6B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "HistogramDescriptor", "HistogramDescriptor\HistogramDescriptor.pyproj", "{AC3EAE0A-C150-41D0-B93E-D72275AA2DA8}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LBP", "LBP\LBP\LBP\LBP.pyproj", "{945A7526-EEF5-4771-88F2-84606537A998}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ImageMatching", "ImageMatching\ImageMatching\ImageMatching.pyproj", "{9F7AF9B5-4EAC-45A5-A32A-B1491A63C04B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ImageRecognitionComparator", "ImageRecognitionComparator\ImageRecognitionComparator.pyproj", "{E9FBB188-0318-4C4A-BCEE-EBAAEE8AF7D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26CF4730-A661-4937-9A74-084CEC507A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26CF4730-A661-4937-9A74-084CEC507A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3EAE0A-C150-41D0-B93E-D72275AA2DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3EAE0A-C150-41D0-B93E-D72275AA2DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945A7526-EEF5-4771-88F2-84606537A998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945A7526-EEF5-4771-88F2-84606537A998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7AF9B5-4EAC-45A5-A32A-B1491A63C04B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7AF9B5-4EAC-45A5-A32A-B1491A63C04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9FBB188-0318-4C4A-BCEE-EBAAEE8AF7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9FBB188-0318-4C4A-BCEE-EBAAEE8AF7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

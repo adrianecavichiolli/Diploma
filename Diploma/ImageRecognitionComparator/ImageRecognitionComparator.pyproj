@@ -3,15 +3,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>ac3eae0a-c150-41d0-b93e-d72275aa2da8</ProjectGuid>
+    <ProjectGuid>e9fbb188-0318-4c4a-bcee-ebaaee8af7d3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>HystogramDescriptorTask.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <StartupFile>ImageRecognitionComparator.py</StartupFile>
+    <SearchPath>..\COOMatrix\COOMatrix\;..\ImageMatching\ImageMatching\;..\LBP\LBP\;..\HistogramDescriptor\;..\LBP\LBP\LBP\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>HystogramDescriptorTask</Name>
-    <RootNamespace>HystogramDescriptorTask</RootNamespace>
+    <Name>ImageRecognitionComparator</Name>
+    <RootNamespace>ImageRecognitionComparator</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +21,29 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="HystogramDescriptorTask.py" />
+    <Compile Include="ImageRecognitionComparator.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\COOMatrix\COOMatrix\COOMatrix.pyproj">
+      <Name>COOMatrix</Name>
+      <Project>{26cf4730-a661-4937-9a74-084cec507a6b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\HistogramDescriptor\HistogramDescriptor.pyproj">
+      <Name>HistogramDescriptor</Name>
+      <Project>{ac3eae0a-c150-41d0-b93e-d72275aa2da8}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageMatching\ImageMatching\ImageMatching.pyproj">
+      <Name>ImageMatching</Name>
+      <Project>{9f7af9b5-4eac-45a5-a32a-b1491a63c04b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\LBP\LBP\LBP\LBP.pyproj">
+      <Name>LBP</Name>
+      <Project>{945a7526-eef5-4771-88f2-84606537a998}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

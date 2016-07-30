@@ -3,15 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>26cf4730-a661-4937-9a74-084cec507a6b</ProjectGuid>
+    <ProjectGuid>9f7af9b5-4eac-45a5-a32a-b1491a63c04b</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>COOMatrix.py</StartupFile>
+    <StartupFile>ImageMatching.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>COOMatrix</Name>
-    <RootNamespace>COOMatrix</RootNamespace>
+    <Name>ImageMatching</Name>
+    <RootNamespace>ImageMatching</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="COOMatrix.py" />
+    <Compile Include="ImageMatching.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

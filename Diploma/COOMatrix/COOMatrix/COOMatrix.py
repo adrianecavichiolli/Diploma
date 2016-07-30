@@ -9,25 +9,32 @@ from skimage.feature import local_binary_pattern
 from skimage import data
 from skimage.color import label2rgb
 from skimage.io import imread
-format = 'F:/studies/diploma/DataSets-Computer-Vision/data.brodatz/size_28x28/D{:03d}_{:02d}.png'
+from skimage.feature import greycomatrix
+format = 'F:/studies/diploma/DataSets-Computer-Vision/data.brodatz/size_128x128/D{:03d}_{:02d}.png'
 classesStart = 1
-classesEnd = 112
+classesEnd = 10
+
+offset = 5
 
 imgStart = 1
 imgEnd = 10
-
-lbpP = 8
-lbpR = 1
-lbpMethod = 'default'
-def calculate_lbp(image) :
-    lbp = local_binary_pattern(image, lbpP, lbpR, lbpMethod)
-    return lbp
 
 def get_image(cls, img) :
     imgName = format.format(cls, img)
     image=imread(imgName)
     return image
 
+def comatrix (image) :
+    result = greycomatrix(image, [offset], [0], 256, symmetric=True, normed=True)
+    return result
+
+def imageCOML1 (image1, image2) :
+    arr1 = comatrix(image1)
+    arr2 = comatrix(image2)
+    np.reshape(arr1, 256*256)
+    np.reshape(arr2, 256*256)
+    result = abs(arr1 - arr2)
+    return np.sum(result)
 
 def calculate_distances(clS, clF, imgS, imgF) :
     result = np.empty((clF - clS, imgF - imgS, clF - clS, imgF - imgS))
@@ -39,16 +46,8 @@ def calculate_distances(clS, clF, imgS, imgF) :
                 if (i1 == 14) :
                     continue #image is absent in dataset
                 for j1 in range (imgS, imgF) :
-                    result[i-clS][j-imgS][i1-clS][j1-imgS] = imageLBPL1(get_image(i, j), get_image(i1, j1))
+                    result[i-clS][j-imgS][i1-clS][j1-imgS] = imageCOML1(get_image(i, j), get_image(i1, j1))
     return result
-
-def imageLBPL1(img1, img2) :
-    lbp1 = calculate_lbp(img1)
-    lbp2 = calculate_lbp(img2)
-    hist1 = np.histogram(lbp1, bins=64)[0]
-    hist2 = np.histogram(lbp2, bins=64)[0]
-    result = abs(hist1 - hist2)
-    return np.sum(result)
 
 correct = 0
 all = 1. * (imgEnd - imgStart) * (classesEnd - classesStart - 1) #1 for the 14-th class
@@ -71,4 +70,4 @@ for i in range (classesStart, classesEnd) :
         if (i == cur_class) :
             correct += 1
 print(correct)                                  
-print(1. * correct / all)                                  
+print(1. * correct / all)  
