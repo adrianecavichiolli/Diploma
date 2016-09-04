@@ -7,6 +7,8 @@ from skimage.io import imread
 from sklearn.metrics import roc_curve 
 from matplotlib import pyplot
 
+import csv
+
 #from common import anorm, getsize
 
 FLANN_INDEX_KDTREE = 1  # bug: flann enums are missing
@@ -77,7 +79,7 @@ def match(kp1, kp2, desc1, desc2, matcher):
     return np.mean(status)
             #vis = explore_match(win, img1, img2, kp_pairs, status, H)
 
-def testMatch(format, path, output, name) :
+def testMatch(format, formatMask, path, output, name) :
     detector, matcher = init_feature(name)
    # format = 'F:\studies\diploma\Diploma\Data-XRay-Resized\8\{}'
 
@@ -85,7 +87,9 @@ def testMatch(format, path, output, name) :
     idxCls = dataset['idx']
     #cnts = dataset['Cnt']
     fnList = dataset['path']
-    images = list(map(lambda x:  imread(format.format(x)), fnList))
+    #images = list(map(lambda x:  imread(format.format(x)), fnList))
+    images = list(map(lambda x: cv2.bitwise_and(imread(format.format(x)),imread(formatMask.format(x))), fnList))
+
     kpsAndDescriptors = list(map(lambda x: detector.detectAndCompute(x, None), images))
 
     kps = list(map(lambda x: x[0], kpsAndDescriptors))
@@ -99,21 +103,55 @@ def testMatch(format, path, output, name) :
                 continue
             distances[i][j] = 1. - match(kps[i], kps[j], descriptors[i], descriptors[j], matcher);
 
-    guessed = np.zeros(len(descriptors))
-    scores = np.zeros(len(descriptors))
-    for i in range(0, len(descriptors)) :
-        k = np.argmin(distances[i])
-        guessed[i] = idxCls[i] == idxCls[k]
-        scores[i] = 1. - distances[i][k]
+    #tpr = 0.
+    #fpr = 0.
 
+    guessedClasses = np.apply_along_axis(lambda x: np.argmin(x), 1, distances)
+
+  #  for i in range(0, len(descriptors)) :
+  #      k = np.argmin(distances[i])
+  #      #scores[i] = 
+  #      if 1. - distances[i][k] >= threshold:
+  #          if idxCls[i] == idxCls[k] :
+  #              tpr = tpr + 1.0
+  #          else:
+  #              fpr = fpr + 1.0
   #  fpr, tpr, thresholds = roc_curve(guessed, scores, pos_label=1)
   #  print(fpr)
  #   print(tpr)
  #   print(thresholds)
    # pyplot.plot(tpr, fpr)
  #   pyplot.show()
-    out = open(output, 'w')
+    
+    #out = '{}.csv'.format(output)
+    #with open(out, 'wb') as csvfile:
+    #    writer = csv.writer(csvfile, delimiter=' ',
+    #                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    #    writer.writerows(distances)
+    with open(output + 'matching_descriptors.csv', 'w', newline='') as fp:
+        a = csv.writer(fp, delimiter=',')
+        a.writerows(descriptors)
 
-    print(np.mean(guessed))
-    out.write(str(np.mean(guessed)))
-    return roc_curve(guessed, scores, pos_label=1)
+    with open(output + 'matching_distances.csv', 'w', newline='') as fp:
+        a = csv.writer(fp, delimiter=',')
+        a.writerows(distances)
+
+    with open(output + 'matching_guessedClasses.csv', 'w', newline='') as fp:
+        a = csv.writer(fp, delimiter=',')
+        a.writerow(guessedClasses)
+
+    with open(output + 'matching_correct.csv', 'w', newline='') as fp:
+        a = csv.writer(fp, delimiter=',')
+        a.writerow(correct)
+
+    #fpr = fpr / len(descriptors)
+    #tpr = tpr / len(descriptors)
+    #return fpr, tpr
+
+format = 'F:\studies\diploma\Diploma\Data-XRay-Resized\8\{}'
+path = 'F:\studies\diploma\Diploma\Data-XRay-Resized\idx1.csv'
+pathSubset4x100 = 'F:\studies\diploma\Diploma\Data-XRay-Resized\idxSubset_4_100.csv'
+formatMask = 'F:\studies\diploma\Diploma\Data-XRay-Resized\8\{}_proc_mask.png'
+
+testMatch(format, formatMask, pathSubset4x100, "Subset", "sift")
+testMatch(format, formatMask, pathSubset4x100, "Set", "sift")

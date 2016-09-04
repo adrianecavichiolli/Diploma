@@ -13,6 +13,12 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ImageMatching", "ImageMatch
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ImageRecognitionComparator", "ImageRecognitionComparator\ImageRecognitionComparator.pyproj", "{E9FBB188-0318-4C4A-BCEE-EBAAEE8AF7D3}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ImageFilter", "ImageFilter\ImageFilter.pyproj", "{246C1736-D440-49EF-9324-A5BBB00BA1B8}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CorrelationMatcher", "CorrelationMatcher\CorrelationMatcher.pyproj", "{A566B2D9-A45E-4363-BC5A-EFD9EA11EF69}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ResultVisualizer", "ResultVisualizer\ResultVisualizer.pyproj", "{943C884E-FF1D-4FB8-B60C-21EE7F69519D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +35,12 @@ Global
 		{9F7AF9B5-4EAC-45A5-A32A-B1491A63C04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9FBB188-0318-4C4A-BCEE-EBAAEE8AF7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9FBB188-0318-4C4A-BCEE-EBAAEE8AF7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246C1736-D440-49EF-9324-A5BBB00BA1B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246C1736-D440-49EF-9324-A5BBB00BA1B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A566B2D9-A45E-4363-BC5A-EFD9EA11EF69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A566B2D9-A45E-4363-BC5A-EFD9EA11EF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943C884E-FF1D-4FB8-B60C-21EE7F69519D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943C884E-FF1D-4FB8-B60C-21EE7F69519D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
